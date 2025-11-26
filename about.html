@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <title>關於我</title>
+ 
+  <link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/mdui/0.4.1/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdnjs.loli.net/ajax/libs/mdui/0.4.1/js/mdui.min.js"></script>
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+
+    html, body {
+      font-family: 'Noto Sans TC', sans-serif;
+      height: 100%;
+      overflow: hidden; 
+      background-color: #f5f5f5; 
+    }
+
+    .main-container {
+      display: flex;
+      height: 100vh;
+    }
+
+    /* 左側固定欄 */
+    .left-panel {
+      width: 300px;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 40px 20px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .profile-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      margin-bottom: 15px;
+    }
+
+    .profile-name {
+      font-size: 1.8em;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .profile-tagline {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9em;
+    }
+    
+    .left-panel .mdui-list-item-content {
+        justify-content: center;
+    }
+    
+    .social-links .mdui-btn {
+        margin: 0 5px;
+    }
+
+    /* 右側內容區 */
+    .right-panel {
+      margin-left: 300px; /* 避開左側欄 */
+      width: calc(100% - 300px);
+      height: 100%;
+      overflow-y: auto; /* 只有右側可以滾動 */
+      padding: 40px;
+      box-sizing: border-box;
+    }
+    
+    .content-card {
+        margin-bottom: 30px;
+    }
+
+    /* RWD 適應手機版 */
+    @media (max-width: 768px) {
+      body {
+        overflow: auto; /* 在手機上恢復滾動 */
+      }
+      .main-container {
+        flex-direction: column;
+        height: auto;
+      }
+      .left-panel {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 30px 15px;
+      }
+      .right-panel {
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+ 
+<body class="mdui-theme-primary-grey mdui-theme-accent-blue">
+
+  <div class="main-container">
+    
+    <aside class="left-panel mdui-color-grey-900 mdui-theme-layout-dark">
+      <div>
+        <img src="image/about.jpg" alt="個人頭像" class="profile-avatar">
+        <h1 class="profile-name mdui-text-color-white">xS91D</h1>
+        <p class="profile-tagline">把握時間 好好享受當下</p>
+      </div>
+
+      <nav>
+        <ul class="mdui-list">
+          <li class="mdui-list-item mdui-ripple mdui-list-item-active">
+            <i class="mdui-list-item-icon mdui-icon material-icons">dashboard</i>
+            <a href="index.html" class="mdui-list-item-content">首頁</a>
+          </li>
+          
+          <!-- 側邊欄 -->
+          <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">work</i>
+            <a href="list.html" class="mdui-list-item-content">專案列表</a>
+          </li>
+          <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">person</i>
+            <a href="about.html" class="mdui-list-item-content">關於我</a>
+          </li>
+          <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">monetization_on</i>
+            <a href="donate.html" class="mdui-list-item-content">支持我</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div>
+        <div class="social-links">
+          <a href="https://github.com/xS91D" target="_blank" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="fa-brands fa-github"></i></a>
+          <a href="https://discordapp.com/users/522308152427937803/" target="_blank" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="fa-brands fa-discord"></i></a>
+          <a href="https://www.facebook.com/cheonje.851438" target="_blank" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+    <p class="mdui-text-color-theme-disabled" style="font-size: 0.8em; margin-top: 20px;">
+      Copyright &copy; 2025 xS91D All rights reserved
+    </p>
+      </div>
+    </aside>
+
+    <main class="right-panel">
+
+      <div class="mdui-card content-card">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">關於我 | About Me</div>
+        </div>
+        <div class="mdui-card-content mdui-typo">
+          <p>Hello! 你好! 我是xS91D，大家都叫我SD，歡迎你來到我的網站。</p>
+          <p>這個網站記錄了我的各個專案歷程、個人經驗，希望我的經驗可以啟發走在相似道路上的你一點方向。</p>
+        </div>
+      </div>
+      
+  <div class="mdui-row-xs-1 mdui-row-md-2 mdui-grid-list">
+
+    <div class="mdui-col">
+      <div class="mdui-card content-card">
+        <div class="mdui-card-header">
+          <i class="mdui-icon material-icons">code</i>
+          <div class="mdui-card-header-title">專業技能</div>
+        </div>
+        <div class="mdui-card-content">
+          <span class="mdui-chip mdui-m-a-1"><span class="mdui-chip-title">網站架設</span></span>
+          <span class="mdui-chip mdui-m-a-1"><span class="mdui-chip-title">專案開發</span></span>
+          <span class="mdui-chip mdui-m-a-1"><span class="mdui-chip-title">程式編寫</span></span>
+          <span class="mdui-chip mdui-m-a-1"><span class="mdui-chip-title">社群經營</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mdui-col">
+      <div class="mdui-card content-card">
+        <div class="mdui-card-header">
+          <i class="mdui-icon material-icons">favorite</i>
+          <div class="mdui-card-header-title">個人興趣</div>
+        </div>
+        <div class="mdui-card-content">
+          <span class="mdui-chip mdui-m-a-1"><span class="mdui-chip-title">編寫程式</span></span>
+          <span class="mdui-chip mdui-m-a-1"><span class="mdui-chip-title">玩狼人殺</span></span>
+          <span class="mdui-chip mdui-m-a-1"><span class="mdui-chip-title">與人交談</span></span>
+          <span class="mdui-chip mdui-m-a-1"><span class="mdui-chip-title">看戲說台灣</span></span>
+        </div>
+      </div>
+    </div>
+
+  <div class.="mdui-card-primary">
+      <div class="mdui-card-primary-title">與我聯繫</div>
+  </div>
+  <div class="mdui-card-content mdui-typo">
+      <p>如果你對於我的專案有興趣、有問題想詢問，可以透過以下方式聯繫</p>
+  </div>
+  <div class="mdui-card-actions">
+      <a href="mailto:htcone123757@gmail.com" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">
+        <i class="mdui-icon material-icons mdui-icon-left">email</i>
+        寄送 E-mail
+      </a>
+      
+      <!-- TODO 留言板功能 -->
+      <button class="mdui-btn mdui-ripple" disabled mdui-tooltip="{content: '功能開發中，敬請期待！'}">
+          <i class="mdui-icon material-icons mdui-icon-left">chat_bubble_outline</i>
+          留言給我
+      </button>
+</div>
+
+      
+    </main>
+
+  </div>
+
+</body>
+
+</html>

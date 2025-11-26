@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <title>瑞の家</title>
+ 
+  <link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/mdui/0.4.1/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdnjs.loli.net/ajax/libs/mdui/0.4.1/js/mdui.min.js"></script>
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+
+    html, body {
+      font-family: 'Noto Sans TC', sans-serif;
+      height: 100%;
+      overflow: hidden; 
+      background-color: #f5f5f5;
+    }
+
+    .main-container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .left-panel {
+      width: 280px;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 30px 15px;
+      box-sizing: border-box;
+      text-align: center;
+      z-index: 100;
+    }
+
+    .profile-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 15px;
+      object-fit: cover;
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      margin-bottom: 15px;
+      background-color: #fff;
+    }
+
+    .profile-name {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 5px 0;
+    }
+
+    .profile-tagline {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.85em;
+      margin-bottom: 20px;
+    }
+
+    .left-panel .mdui-list-item {
+        border-radius: 8px;
+        margin-bottom: 5px;
+        transition: 0.3s;
+    }
+    .left-panel .mdui-list-item:hover {
+        background-color: rgba(255,255,255,0.1);
+    }
+    .left-panel .mdui-list-item-content {
+        font-weight: 500;
+    }
+    
+    .right-panel {
+      margin-left: 280px; 
+      width: calc(100% - 280px);
+      height: 100%;
+      overflow-y: auto; 
+      padding: 40px;
+      box-sizing: border-box;
+    }
+    
+    .content-card {
+        margin-bottom: 30px;
+        border-radius: 8px;
+        transition: transform 0.3s;
+    }
+    .content-card:hover {
+        box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        transform: translateY(-2px);
+    }
+
+    .tool-header-text { font-size: 1.2em; font-weight: bold; }
+    .bg-indigo { background-color: #3f51b5 !important; color: white; }
+    .bg-pink { background-color: #e91e63 !important; color: white; }
+    .bg-teal { background-color: #009688 !important; color: white; }
+    .bg-orange { background-color: #ff9800 !important; color: white; }
+
+    @media (max-width: 768px) {
+      body { overflow: auto; }
+      .main-container { flex-direction: column; height: auto; }
+      .left-panel { position: relative; width: 100%; height: auto; padding: 30px 15px; }
+      .right-panel { margin-left: 0; width: 100%; height: auto; padding: 20px; }
+    }
+  </style>
+</head>
+ 
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink">
+
+  <div class="main-container">
+    
+    <aside class="left-panel mdui-color-blue-grey-900 mdui-theme-layout-dark">
+      <div>
+        <img src="image/about.jpg" alt="個人頭像" class="profile-avatar">
+        <h1 class="profile-name mdui-text-color-white">瑞の家</h1>
+        <p class="profile-tagline">利用萬能のAI打造完善的網站</p>
+      </div>
+
+      <nav>
+        <ul class="mdui-list">
+          <li class="mdui-list-item mdui-ripple mdui-list-item-active">
+            <i class="mdui-list-item-icon mdui-icon material-icons">dashboard</i>
+            <a href="index.html" class="mdui-list-item-content">首頁</a>
+          </li>
+          
+          <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">work</i>
+            <a href="list.html" class="mdui-list-item-content">專案列表</a>
+          </li>
+          <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">person</i>
+            <a href="about.html" class="mdui-list-item-content">關於我</a>
+          </li>
+          <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">monetization_on</i>
+            <a href="donate.html" class="mdui-list-item-content">支持我</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div>
+        <div class="social-links">
+          <a href="https://github.com/xS91D" target="_blank" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="fa-brands fa-github"></i></a>
+          <a href="https://discordapp.com/users/522308152427937803/" target="_blank" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="fa-brands fa-discord"></i></a>
+          <a href="https://www.facebook.com/cheonje.851438" target="_blank" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+        <p class="mdui-text-color-theme-disabled" style="font-size: 0.8em; margin-top: 20px;">
+          Copyright &copy; <span id="current-year"></span> xS91D All rights reserved
+        </p>
+      </div>
+    </aside>
+
+    <main class="right-panel">
+
+      <div class="mdui-card content-card mdui-shadow-4">
+        <div class="mdui-card-media mdui-color-indigo-600" style="padding: 40px; color: white;">
+           <h1 style="margin:0; text-align: center;">瑞の家 </h1>
+        </div>
+        <div class="mdui-card-content mdui-typo">
+            <p style="text-align: center;">一個結合了AI技術打造最齊全的應用與工具平台</p>
+        </div>
+      </div>
+      
+      <h2 class="mdui-text-color-theme-text" style="margin-bottom: 20px; padding-left: 5px; border-left: 5px solid #3f51b5;">功能   </h2>
+      
+      <div class="mdui-row-xs-1 mdui-row-md-2 mdui-grid-list">
+        <div class="mdui-col">
+        <div class="mdui-card content-card">
+            
+            <div class="mdui-card-header bg-red-accent">
+            <i class="mdui-icon material-icons mdui-float-right" style="font-size: 2em; opacity: 0.5;">security</i>
+            <div class="tool-header-text">網路安全</div>
+            </div>
+
+            <div class="mdui-card-actions mdui-card-actions-stacked">
+                
+                <a href="password.html" class="mdui-btn mdui-ripple mdui-text-color-teal mdui-text-left">
+                            <i class="mdui-icon material-icons mdui-icon-left">autorenew</i>
+                            隨機密碼生成器
+                </a>
+
+                <a href="sec_password.html" class="mdui-btn mdui-ripple mdui-text-color-red-accent mdui-text-left">
+                    <i class="mdui-icon material-icons mdui-icon-left">vpn_key</i>
+                    待新增
+                </a>
+
+                <a href="sec_ip_lookup.html" class="mdui-btn mdui-ripple mdui-text-color-red-accent mdui-text-left">
+                    <i class="mdui-icon material-icons mdui-icon-left">dns</i>
+                    待新增
+                </a>
+
+            </div>
+        </div>
+        </div>
+
+            <div class="mdui-col">
+            <div class="mdui-card content-card">
+                
+                <div class="mdui-card-header bg-purple">
+                <i class="mdui-icon material-icons mdui-float-right" style="font-size: 2em; opacity: 0.5;">web</i>
+                <div class="tool-header-text">網站開發</div>
+                </div>
+
+                <div class="mdui-card-actions mdui-card-actions-stacked">
+                    
+                    <a href="web_color.html" class="mdui-btn mdui-ripple mdui-text-color-purple mdui-text-left">
+                        <i class="mdui-icon material-icons mdui-icon-left">palette</i>
+                        網頁顏色代碼轉換
+                    </a>
+
+                    <a href="web_meta.html" class="mdui-btn mdui-ripple mdui-text-color-purple mdui-text-left">
+                        <i class="mdui-icon material-icons mdui-icon-left">label_outline</i>
+                        待新增
+                    </a>
+
+                    <a href="web_css.html" class="mdui-btn mdui-ripple mdui-text-color-purple mdui-text-left">
+                        <i class="mdui-icon material-icons mdui-icon-left">style</i>
+                        待新增
+                    </a>
+
+                </div>
+                
+            </div>
+            </div>
+
+            <div class="mdui-col">
+            <div class="mdui-card content-card">
+            
+            <div class="mdui-card-header bg-amber">
+            <i class="mdui-icon material-icons mdui-float-right" style="font-size: 2em; opacity: 0.5;">translate</i>
+            <div class="tool-header-text">語言文化</div>
+            </div>
+
+            <div class="mdui-card-actions mdui-card-actions-stacked">
+                
+                <a href="lang_convert.html" class="mdui-btn mdui-ripple mdui-text-color-amber mdui-text-left">
+                    <i class="mdui-icon material-icons mdui-icon-left">compare_arrows</i>
+                    繁簡轉換
+                </a>
+
+                <a href="lang_pinyin.html" class="mdui-btn mdui-ripple mdui-text-color-amber mdui-text-left">
+                    <i class="mdui-icon material-icons mdui-icon-left">spellcheck</i>
+                    待新增
+                </a>
+
+                
+            </div>
+
+        </div>
+
+        </div>
+
+            <div class="mdui-col">
+            <div class="mdui-card content-card">
+                
+                <div class="mdui-card-header bg-cyan">
+                <i class="mdui-icon material-icons mdui-float-right" style="font-size: 2em; opacity: 0.5;">edit</i>
+                <div class="tool-header-text">線上編輯</div>
+                </div>
+
+                <div class="mdui-card-actions mdui-card-actions-stacked">
+                    
+                    <a href="editor_markdown.html" class="mdui-btn mdui-ripple mdui-text-color-cyan mdui-text-left">
+                        <i class="mdui-icon material-icons mdui-icon-left">text_format</i>
+                        Markdown 編輯器
+                    </a>
+
+                    <a href="editor_code.html" class="mdui-btn mdui-ripple mdui-text-color-cyan mdui-text-left">
+                        <i class="mdui-icon material-icons mdui-icon-left">code</i>
+                        HTML/CSS 線上運行
+                    </a>
+
+                </div>
+
+            </div>
+            </div>
+
+            <div class="mdui-col">
+            <div class="mdui-card content-card">
+                
+                <div class="mdui-card-header bg-blue-grey">
+                <i class="mdui-icon material-icons mdui-float-right" style="font-size: 2em; opacity: 0.5;">widgets</i>
+                <div class="tool-header-text">其他工具</div>
+                </div>
+
+                <div class="mdui-card-actions mdui-card-actions-stacked">
+                    
+                    <a href="tool_qrcode.html" class="mdui-btn mdui-ripple mdui-text-color-blue-grey mdui-text-left">
+                        <i class="mdui-icon material-icons mdui-icon-left">apps</i>
+                        QR Code 二維碼
+                    </a>
+
+                    <a href="tool_unit.html" class="mdui-btn mdui-ripple mdui-text-color-blue-grey mdui-text-left">
+                        <i class="mdui-icon material-icons mdui-icon-left">straighten</i>
+                        待新增
+                    </a>
+
+                    <a href="tool_link.html" class="mdui-btn mdui-ripple mdui-text-color-blue-grey mdui-text-left">
+                        <i class="mdui-icon material-icons mdui-icon-left">link</i>
+                        待新增
+                    </a>
+
+                </div>
+
+            </div>
+            </div>
+
+      </div>
+
+
+
+      <div class="mdui-divider" style="margin: 30px 0;"></div>
+      <div class="mdui-text-center mdui-text-color-grey-500">
+          &copy; 2025 Copyright © xS91D All rights reserved
+      </div>
+      
+    </main>
+  </div>
+</body>
+</html>

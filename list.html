@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <title>專案列表</title>
+ 
+  <link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/mdui/0.4.1/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdnjs.loli.net/ajax/libs/mdui/0.4.1/js/mdui.min.js"></script>
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+    html, body { font-family: 'Noto Sans TC', sans-serif; height: 100%; overflow: hidden; background-color: #f5f5f5; }
+    .main-container { display: flex; height: 100vh; }
+    .left-panel { width: 300px; height: 100%; position: fixed; top: 0; left: 0; display: flex; flex-direction: column; justify-content: space-between; padding: 40px 20px; box-sizing: border-box; text-align: center; }
+    .profile-avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid rgba(255, 255, 255, 0.2); margin-bottom: 15px; }
+    .profile-name { font-size: 1.8em; font-weight: bold; margin: 0; }
+    .profile-tagline { color: rgba(255, 255, 255, 0.7); font-size: 0.9em; }
+    .left-panel .mdui-list-item-content { justify-content: center; }
+    .social-links .mdui-btn { margin: 0 5px; }
+    .right-panel { margin-left: 300px; width: calc(100% - 300px); height: 100%; overflow-y: auto; padding: 40px; box-sizing: border-box; }
+    .content-card { margin-bottom: 30px; }
+    @media (max-width: 768px) {
+      body { overflow: auto; }
+      .main-container { flex-direction: column; height: auto; }
+      .left-panel { position: relative; width: 100%; height: auto; padding: 30px 15px; }
+      .right-panel { margin-left: 0; width: 100%; height: auto; padding: 20px; }
+    }
+  </style>
+</head>
+ 
+  <body class="mdui-theme-primary-grey mdui-theme-accent-blue">
+
+  <div class="main-container">
+    
+    <aside class="left-panel mdui-color-grey-900 mdui-theme-layout-dark">
+      <div>
+        <img src="image/about.jpg" alt="個人頭像" class="profile-avatar">
+        <h1 class="profile-name mdui-text-color-white">xS91D</h1>
+        <p class="profile-tagline">想像力使我變得更加強大👿</p>
+      </div>
+
+      <nav>
+        <ul class="mdui-list">
+          <li class="mdui-list-item mdui-ripple mdui-list-item-active">
+            <i class="mdui-list-item-icon mdui-icon material-icons">dashboard</i>
+            <a href="index.html" class="mdui-list-item-content">首頁</a>
+          </li>
+          
+          <!-- 側邊欄 -->
+          <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">work</i>
+            <a href="list.html" class="mdui-list-item-content">專案列表</a>
+          </li>
+          <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">person</i>
+            <a href="about.html" class="mdui-list-item-content">關於我</a>
+          </li>
+          <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">monetization_on</i>
+            <a href="donate.html" class="mdui-list-item-content">支持我</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div>
+        <div class="social-links">
+          <a href="https://github.com/xS91D" target="_blank" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="fa-brands fa-github"></i></a>
+          <a href="https://discordapp.com/users/522308152427937803/" target="_blank" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="fa-brands fa-discord"></i></a>
+          <a href="https://www.facebook.com/cheonje.851438" target="_blank" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+        <p class="mdui-text-color-theme-disabled" style="font-size: 0.8em; margin-top: 20px;">
+            Copyright &copy; <span id="current-year"></span> xS91D All rights reserved
+        </p>
+      </div>
+    </aside>
+
+    <main class="right-panel">
+
+      <div class="mdui-card content-card">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">專案列表</div>
+          <div class="mdui-card-primary-subtitle">以下項目是我所開發的專案，部分專案為開源狀態供大家使用。</div>
+        </div>
+      </div>
+
+      <div class="mdui-card content-card">
+        <div class="mdui-tab mdui-tab-full-width" mdui-tab>
+          <a href="#tab-all" class="mdui-ripple">全部專案</a> <!-- 點了後會跳轉到指定頁面 -->
+        </div>
+        
+        <div id="tab-all" class="mdui-p-a-2">
+            <div class="mdui-grid-list mdui-row-xs-1 mdui-row-sm-2 mdui-row-lg-3">
+
+                <div class="mdui-col">
+                    <div class="mdui-card mdui-hoverable">
+                        <div class="mdui-card-media">
+                            <img src="image/sdt-x.png" style="height: 200px; object-fit: cover;"/>
+                        </div>
+                        <div class="mdui-card-primary">
+                            <div class="mdui-card-primary-title">Minecraft伺服器官方網站</div>
+                        </div>
+                        <div class="mdui-card-content">
+                            <p>為遊戲社群設計的官方網站，包含了「伺服介紹」、「狀態查詢」、「收支查詢」等功能...</p>
+                            <span class="mdui-chip"><span class="mdui-chip-title">Official Website</span></span>
+                            <span class="mdui-chip"><span class="mdui-chip-title">Game Community</span></span>
+                            <span class="mdui-chip"><span class="mdui-chip-title">Web Design</span></span>
+                        </div>
+                        <div class="mdui-card-actions">
+                            <a href="www.sdt-x.top" target="_blank" class="mdui-btn mdui-ripple">前往查看</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdui-col">
+                    <div class="mdui-card mdui-hoverable">
+                        <div class="mdui-card-media">
+                            <img src="image/cultivation.png" style="height: 200px; object-fit: cover;"/>
+                        </div>
+                        <div class="mdui-card-primary">
+                            <div class="mdui-card-primary-title">修仙遊戲輔助網</div>
+                        </div>
+                        <div class="mdui-card-content">
+                            <p>專門為Weplay App 內建「修仙」遊戲而生，為遊玩該遊戲上提供便利性...</p>
+                            <span class="mdui-chip"><span class="mdui-chip-title">Game Tool</span></span>
+                            <span class="mdui-chip"><span class="mdui-chip-title">Third-Party Tool</span></span>
+                            <span class="mdui-chip"><span class="mdui-chip-title">Data Visualization</span></span>
+                        </div>
+                        <div class="mdui-card-actions">
+                            <a href="www.sdt-x.top" target="_blank" class="mdui-btn mdui-ripple">前往查看</a>
+                            <a href="https://github.com/xS91D/Cultivation-calculator-v2.0.0/archive/refs/heads/main.zip" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" style="margin-left: 16px;">
+                            <i class="mdui-icon material-icons mdui-icon-left">file_download</i>下載專案</a>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+        </div>
+      </div>
+      
+    </main>
+  </div>
+
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
