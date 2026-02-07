@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抽抽樂</title>
+    <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css"/>
+</head>
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-appbar-with-toolbar">
+
+    <div class="mdui-appbar mdui-appbar-fixed">
+        <div class="mdui-toolbar mdui-color-theme">
+            <span class="mdui-typo-headline">🎁 抽抽樂系統</span>
+            <div class="mdui-toolbar-spacer"></div>
+        </div>
+    </div>
+
+    <div class="mdui-container mdui-m-t-4">
+        <div class="mdui-row">
+            <div class="mdui-col-md-5">
+                <div class="mdui-card mdui-p-a-2">
+                    <div class="mdui-card-primary">
+                        <div class="mdui-card-primary-title">抽獎設定</div>
+                    </div>
+                    
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">獎項名稱 (例如：獎品1)</label>
+                        <input class="mdui-textfield-input" type="text" id="prizeName" value="特等獎"/>
+                    </div>
+
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">抽出人數</label>
+                        <input class="mdui-textfield-input" type="number" id="drawCount" value="1" min="1"/>
+                    </div>
+
+                    <div class="mdui-textfield">
+                        <label class="mdui-textfield-label">參與名單 (每行一個人名)</label>
+                        <textarea class="mdui-textfield-input" rows="10" id="participantList" placeholder="請輸入名單..."></textarea>
+                    </div>
+
+                    <div class="mdui-card-actions">
+                        <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" onclick="startDraw()">開始抽獎</button>
+                        <button class="mdui-btn mdui-ripple" onclick="clearAll()">重置</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mdui-col-md-7">
+                <div class="mdui-card mdui-p-a-2" style="min-height: 480px;">
+                    <div class="mdui-card-primary">
+                        <div class="mdui-card-primary-title">中獎名單</div>
+                    </div>
+                    
+                    <div id="resultArea" class="mdui-typo">
+                        <p class="mdui-text-color-theme-secondary">尚未進行抽獎...</p>
+                    </div>
+
+                    <div class="mdui-card-actions mdui-p-t-2" id="exportActions" style="display: none;">
+                        <button class="mdui-btn mdui-btn-outlined mdui-ripple" onclick="exportResults()">匯出中獎名單 (.txt)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
+    <script>
+        let currentResults = [];
+
+        function startDraw() {
+            const prize = document.getElementById('prizeName').value;
+            const count = parseInt(document.getElementById('drawCount').value);
+            const rawList = document.getElementById('participantList').value.trim();
+            
+            if (!rawList) {
+                mdui.alert('請先輸入參與名單！');
+                return;
+            }
+
+            // 過濾空白行並轉為陣列
+            let participants = rawList.split('\n').map(name => name.trim()).filter(name => name !== "");
+
+            if (participants.length < count) {
+                mdui.alert(`參與人數 (${participants.length}) 小於欲抽出人數 (${count})！`);
+                return;
+            }
+
+            // 洗牌演算法 (Fisher-Yates Shuffle)
+            for (let i = participants.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [participants[i], participants[j]] = [participants[j], participants[i]];
+            }
+
+            // 取出前 N 名
+            currentResults = participants.slice(0, count);
+
+            // 渲染畫面
+            displayResults(prize);
+        }
+
+        function displayResults(prize) {
+            const resultArea = document.getElementById('resultArea');
+            const exportActions = document.getElementById('exportActions');
+            
+            let html = `<h3>獎項：${prize}</h3><ul class="mdui-list">`;
+            currentResults.forEach((winner, index) => {
+                html += `
+                    <li class="mdui-list-item">
+                        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-amber">stars</i>
+                        <div class="mdui-list-item-content">
+                            <div class="mdui-list-item-title">第 ${index + 1} 位中獎者：<strong>${winner}</strong></div>
+                        </div>
+                    </li>`;
+            });
+            html += `</ul>`;
+            
+            resultArea.innerHTML = html;
+            exportActions.style.display = 'block';
+            
+            mdui.snackbar({
+                message: '抽獎完成！',
+                position: 'right-top'
+            });
+        }
+
+        function exportResults() {
+            const prize = document.getElementById('prizeName').value;
+            const content = `獎項：${prize}\n中獎時間：${new Date().toLocaleString()}\n------------------\n` + currentResults.join('\n');
+            
+            const blob = new Blob([content], { type: 'text/plain' });
+            const anchor = document.createElement('a');
+            anchor.download = `中獎名單_${prize}.txt`;
+            anchor.href = window.URL.createObjectURL(blob);
+            anchor.click();
+            window.URL.revokeObjectURL(anchor.href);
+        }
+
+        function clearAll() {
+            document.getElementById('participantList').value = '';
+            document.getElementById('resultArea').innerHTML = '<p class="mdui-text-color-theme-secondary">尚未進行抽獎...</p>';
+            document.getElementById('exportActions').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
